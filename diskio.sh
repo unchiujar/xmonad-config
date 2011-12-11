@@ -1,0 +1,1 @@
+/home/vasile/diskio.sh
