@@ -23,14 +23,14 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "/usr/bin/urxvt"
+myTerminal = "/usr/bin/konsole"
 
 
 ------------------------------------------------------------------------
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
+myWorkspaces = ["1:code","2:docs","3:comms","4:media","5:temp"] ++ map show [6..9]
  
 
 ------------------------------------------------------------------------
@@ -48,17 +48,18 @@ myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "Chromium"       --> doShift "2:web"
+    [ className =? "Chromium"       --> doShift "2:docs"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Galculator"     --> doFloat
+    , className =? "Yakuake"        --> doFloat
+    , className =? "xbmc"           --> doFloat
     , className =? "Gimp"           --> doFloat
-    , className =? "Google-chrome"  --> doShift "2:web"
+    , className =? "Google-chrome"  --> doShift "2:docs"
     , resource  =? "gpicview"       --> doFloat
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doFloat
-    , className =? "VirtualBox"     --> doShift "4:vm"
-    , className =? "Xchat"          --> doShift "5:media"
+    , className =? "amarok"         --> doShift "4:media"
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
@@ -86,7 +87,7 @@ myLayout = avoidStruts (
     nmaster = 1
  
     -- Default proportion of screen occupied by master pane.
-    ratio   = 1/2
+    ratio   = 8/10
  
     -- Percent of screen to increment by when resizing panes.
     delta   = 3/100
@@ -127,7 +128,7 @@ myBorderWidth = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask = mod1Mask
+myModMask = mod4Mask
  
 -- The mask for the numlock key. Numlock status is "masked" from the
 -- current modifier status, so the keybindings will work with numlock on or
@@ -160,7 +161,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "exe=`dmenu_path | yeganesh` && eval \"exec $exe\"")
+     spawn "/usr/bin/dmenu_run -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC'")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
@@ -373,7 +374,7 @@ defaults = defaultConfig {
     focusFollowsMouse  = myFocusFollowsMouse,
     borderWidth        = myBorderWidth,
     modMask            = myModMask,
-    numlockMask        = myNumlockMask,
+    -- numlockMask        = myNumlockMask,
     workspaces         = myWorkspaces,
     normalBorderColor  = myNormalBorderColor,
     focusedBorderColor = myFocusedBorderColor,
