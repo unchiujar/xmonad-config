@@ -35,7 +35,6 @@ For source code, or to contribute, see the
 * [xmobar 0.11.1 or 0.13](http://projects.haskell.org/xmobar/)
 * [trayer 1.0](http://fbpanel.sourceforge.net/)
 * [dmenu 4.0](http://tools.suckless.org/dmenu/)
-* [yeganesh 2.2](http://dmwit.com/yeganesh/)
 * [scrot 0.8](http://freshmeat.net/projects/scrot/)
 
 ### Installing requirements on [Arch Linux](http://www.archlinux.org/)
