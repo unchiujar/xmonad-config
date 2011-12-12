@@ -1,6 +1,6 @@
 # xmonad-config
 xmonad-config is the [xmonad](http://xmonad.org/) configuration used by Vic Fryzel.
-
+This is a custom version for a 1280x800 laptop in combination with a 1920x1200 monitor.
 
 ## Introduction
 
@@ -22,10 +22,10 @@ This project is also recommended for advanced xmonad users, who may just not
 want to reinvent the wheel.  All source provided with this project is well
 documented and simple to customize.
 
-![Screenshot of xmonad-config](/vicfryzel/xmonad-config/raw/master/screenshot.png)
+![Screenshot of xmonad-config](/unchiujar/xmonad-config/raw/master/screenshot.png)
 
 For source code, or to contribute, see the
-[xmonad-config project page](http://github.com/vicfryzel/xmonad-config).
+[xmonad-config project page](http://github.com/unchiujar/xmonad-config).
 
 
 ## Requirements
@@ -40,17 +40,16 @@ For source code, or to contribute, see the
 
 ### Installing requirements on [Arch Linux](http://www.archlinux.org/)
 
-    sudo pacman -S xmonad xmonad-contrib xmobar trayer dmenu scrot \
-        cabal-install
+    sudo pacman -S xmonad xmobar trayer dmenu scrot cabal-install
     cabal update
-    cabal install yeganesh
+    cabal --global install xmonad-contrib
 
 ### Installing requirements on [Ubuntu Linux](http://www.ubuntu.com/)
 
     sudo aptitude install xmonad libghc6-xmonad-contrib-dev xmobar trayer \
         suckless-tools scrot cabal-install
     cabal update
-    cabal install yeganesh
+    cabal --global install xmonad-contrib
     
 
 ## Installation
@@ -60,7 +59,7 @@ you may already have, cloning the git repository, and updating your PATH.
 
     cd
     mv .xmonad .xmonad.orig
-    git clone https://github.com/vicfryzel/xmonad-config.git .xmonad
+    git clone https://github.com/unchiujar/xmonad-config.git .xmonad
     echo "export PATH=\$PATH:~/.cabal/bin:~/.xmonad/bin" >> ~/.bashrc
     source ~/.bashrc
 
@@ -72,7 +71,7 @@ here are some instructions for some common login managers.
 
     echo xmonad >> ~/.xsession
     # Note: this method will start no programs in your new session upon login.
-    # To get a terminal in your next session, press Alt+Shift+Enter.
+    # To get a terminal in your next session, press Meta+Shift+Enter.
     # Logout, login from xdm/kdm/gdm
 
 ### Starting xmonad from slim
@@ -80,46 +79,69 @@ here are some instructions for some common login managers.
     ln -s ~/.xmonad/xinitrc ~/.xinitrc
     # Logout, login from slim
 
+### Using the scripts
 
+To use the i3status you need to install i3status and copy i3status.conf to
+/etc/i3status.conf
+
+   sudo apt-get install i3status
+
+The xmobar configuration takes the i3status information from /tmp/i3.fifo. 
+The FIFO is created by running xmonad_config after startup or by running the 
+following commands
+
+    rm /tmp/i3.fifo
+    mkfifo /tmp/i3.fifo
+    i3status >> /tmp/i3.fifo&
+
+To display the disk I/O you need to run the diskio.sh script. The script
+creates /tmp/diskio.fifo from which xmobar reads the information.
+
+
+Currently there is a bug where xmobar doesn't display the i3status and disk 
+info after starting the scripts. 
+The workaround is to restart xmonad by using 
+
+  Meta+Q
 ## Keyboard shortcuts
 
 After starting xmonad, use the following keyboard shortcuts to function in
 your new window manager.  I recommend you print these out so that you don't
 get stranded once you logout and back in.
 
-* Alt+Shift+Return: Start a terminal
-* Alt+Ctrl+l: Lock screen
-* Alt+p: Start dmenu.  Once it comes up, type the name of a program and enter
-* Alt+Shift+p: Take screenshot in select mode. Click or click and drag to select
-* Alt+Ctrl+Shift+p: Take fullscreen screenshot. Supports multiple monitors
-* Alt+Shift+c: Close focused window
-* Alt+Space: Change workspace layout
-* Alt+Shift+Space: Change back to default workspace layout
-* Alt+n: Resize viewed windows to the correct size
-* Alt+Tab: Focus next window
-* Alt+j: Focus next window
-* Alt+k: Focus previous window
-* Alt+m: Focus master window
-* Alt+Return: Swap focused window with master window
-* Alt+Shift+j: Swap focused window with next window
-* Alt+Shift+k: Swap focused window with previous window
-* Alt+h: Shrink master window area
-* Alt+l: Expand master window area
-* Alt+t: Push floating window back into tiling
-* Alt+,: Increment number of windows in master window area
-* Alt+.: Decrement number of windows in master window area
-* Alt+q: Restart xmonad. This reloads xmonad configuration, does not logout
-* Alt+Shift+q: Quit xmonad and logout
-* Alt+[1-9]: Switch to workspace 1-9, depending on which number was pressed
-* Alt+Shift+[1-9]: Send focused window to workspace 1-9
-* Alt+w: Focus left-most monitor (Xinerama screen 1)
-* Alt+e: Focus center-most monitor (Xinerama screen 2)
-* Alt+r: Focus right-most monitor (Xinerama screen 3)
-* Alt+Shift+w: Send focused window to workspace on left-most monitor
-* Alt+Shift+e: Send focused window to workspace on center-most monitor
-* Alt+Shift+r: Send focused window to workspace on right-most monitor
-* Alt+Left Mouse Drag: Drag focused window out of tiling
-* Alt+Right Mouse Drag: Resize focused window, bring out of tiling if needed
+* Meta+Shift+Return: Start a terminal
+* Meta+Ctrl+l: Lock screen
+* Meta+p: Start dmenu.  Once it comes up, type the name of a program and enter
+* Meta+Shift+p: Take screenshot in select mode. Click or click and drag to select
+* Meta+Ctrl+Shift+p: Take fullscreen screenshot. Supports multiple monitors
+* Meta+Shift+c: Close focused window
+* Meta+Space: Change workspace layout
+* Meta+Shift+Space: Change back to default workspace layout
+* Meta+n: Resize viewed windows to the correct size
+* Meta+Tab: Focus next window
+* Meta+j: Focus next window
+* Meta+k: Focus previous window
+* Meta+m: Focus master window
+* Meta+Return: Swap focused window with master window
+* Meta+Shift+j: Swap focused window with next window
+* Meta+Shift+k: Swap focused window with previous window
+* Meta+h: Shrink master window area
+* Meta+l: Expand master window area
+* Meta+t: Push floating window back into tiling
+* Meta+,: Increment number of windows in master window area
+* Meta+.: Decrement number of windows in master window area
+* Meta+q: Restart xmonad. This reloads xmonad configuration, does not logout
+* Meta+Shift+q: Quit xmonad and logout
+* Meta+[1-9]: Switch to workspace 1-9, depending on which number was pressed
+* Meta+Shift+[1-9]: Send focused window to workspace 1-9
+* Meta+w: Focus left-most monitor (Xinerama screen 1)
+* Meta+e: Focus center-most monitor (Xinerama screen 2)
+* Meta+r: Focus right-most monitor (Xinerama screen 3)
+* Meta+Shift+w: Send focused window to workspace on left-most monitor
+* Meta+Shift+e: Send focused window to workspace on center-most monitor
+* Meta+Shift+r: Send focused window to workspace on right-most monitor
+* Meta+Left Mouse Drag: Drag focused window out of tiling
+* Meta+Right Mouse Drag: Resize focused window, bring out of tiling if needed
 
 
 ## Personalizing or modifying xmonad-config
