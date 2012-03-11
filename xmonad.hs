@@ -59,7 +59,7 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doFloat
-    , className =? "amarok"         --> doShift "4:media"
+    , className =? "Amarok"         --> doShift "4:media"
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
