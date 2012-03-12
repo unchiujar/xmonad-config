@@ -58,7 +58,6 @@ myManageHook = composeAll
     , resource  =? "gpicview"       --> doFloat
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
-    , resource  =? "skype"          --> doFloat
     , className =? "amarok"         --> doShift "4:media"
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
@@ -156,7 +155,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Lock the screen using xscreensaver.
   , ((modMask .|. controlMask, xK_l),
-     spawn "xscreensaver-command -lock")
+     spawn "gnome-screensaver-command --lock")
 
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
