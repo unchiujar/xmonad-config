@@ -9,7 +9,7 @@ Config {
     font = "xft:Fixed-8",
     bgColor = "#000000",
     fgColor = "#ffffff",
-    position = Static { xpos = 1920, ypos = 0, width = 1000, height = 16 },
+    position = Static { xpos = 0, ypos = 0, width = 1000, height = 16 },
     lowerOnStart = True,
     commands = [
         Run Weather "LRCL" ["-t","<tempC>°C <skyCondition>","-L","64","-H","77","--normal","#CEFFAC","--high","#FFB6B0","--low","#96CBFE"] 36000,
