@@ -13,8 +13,8 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Util.Run(spawnPipe)
--- import XMonad.Util.EZConfig(additionalKeys)
--- import qualified XMonad.StackSet as W
+import XMonad.Util.EZConfig(additionalKeys)
+import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
 
