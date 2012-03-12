@@ -1,3 +1,5 @@
+xcompmgr&
+feh --bg-center ~/Poze/net/girl_of_the_ocean_by_foureyes.jpg 
 ./diskio.sh&
 rm /tmp/i3.fifo
 mkfifo /tmp/i3.fifo
