@@ -1,0 +1,12 @@
+xrandr --output DFP5 --auto
+xrandr --output DFP5 --rotate  right
+
+xrandr --output DFP6 --auto
+xrandr --output DFP6 --rotate right
+
+xrandr --output DFP1 --auto
+xrandr --output DFP1 --rotate right
+
+xrandr --output DFP6 --right-of DFP1
+xrandr --output DFP5 --right-of DFP6
+

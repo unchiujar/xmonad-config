@@ -1,19 +1,5 @@
 xcompmgr&
 feh --bg-center ~/Poze/net/girl_of_the_ocean_by_foureyes.jpg 
-./diskio.sh&
-rm /tmp/i3.fifo
-mkfifo /tmp/i3.fifo
-i3status >> /tmp/i3.fifo&
-xrandr --output LVDS1 --auto
-xrandr --output VGA1  --auto --left-of LVDS1
-xrandr --output VGA1 --noprimary
-xrandr --output LVDS1 --primary
 trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 8 --height 12 --transparent true --tint 0x000000 &
-qdbus org.kde.kded /kded loadModule powerdevil
-knetworkmanager&
-kmix&
-krunner&
-basket&
-amarok&
-dropbox start&
+dropboxd 
 pidgin&

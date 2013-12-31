@@ -9,7 +9,7 @@ Config {
     font = "xft:Fixed-8",
     bgColor = "#000000",
     fgColor = "#ffffff",
-    position = Static { xpos = 1920, ypos = 0, width = 1000, height = 16 },
+    position = Static { xpos = 0, ypos = 0, width = 3000, height = 16 },
     -- position = Static { xpos = 0, ypos = 0, width = 1000, height = 16 },
     lowerOnStart = True,
     commands = [
