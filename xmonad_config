@@ -1,5 +1,13 @@
+gnome-settings-daemon&
 xcompmgr&
 feh --bg-center ~/Poze/net/girl_of_the_ocean_by_foureyes.jpg 
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 8 --height 12 --transparent true --tint 0x000000 &
-dropboxd 
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 28 --height 20 --transparent true --tint 0x000000 &
 pidgin&
+keepassx&
+skype&
+dropbox start
+thunderbird&
+firefox&
+hamster-time-tracker&
+nm-applet&
+
